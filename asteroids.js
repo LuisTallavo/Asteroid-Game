@@ -4,10 +4,10 @@ let bullets = [];
 let startnumasteroids;
 let cooldown = 10;
 let counter = cooldown;
+let mode = 0;
 
 function setup() 
 {
-	mode = 0;
 	ship = new Ship();
 	startnumasteroids = floor(random(4,8));
 	for (let i = 0; i < startnumasteroids; i++)
@@ -15,10 +15,7 @@ function setup()
 		rock.push(new meteor());
 	}
 	createCanvas(window.innerWidth, window.innerHeight);
-
 }
-
-
 
 function draw() 
 {
@@ -65,8 +62,7 @@ function draw()
 function keypress()
 {
 	if (keyIsDown(13)) {
-		let e = document.querySelector("#startGame");
-		e.style.display = 'none';
+		document.querySelector("#startGame").style.display = 'none';
 		mode = 1;
 	}
 

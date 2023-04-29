@@ -5,6 +5,7 @@ html, body {
     display: block;
     background-image: url("images/bg.jpg");
     overflow: hidden;
+
 }
 
 #startGame {
