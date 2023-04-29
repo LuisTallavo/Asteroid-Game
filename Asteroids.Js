@@ -5,11 +5,6 @@ let startnumasteroids;
 let cooldown = 10;
 let counter = cooldown;
 let mode = 0;
-let started = false; 
-
-function start(){
-	started = true;
- }
 
 function setup() 
 {
@@ -68,9 +63,7 @@ function keypress()
 {
 	if (keyIsDown(13)) {
 		document.querySelector("#startGame").style.display = 'none';
-		document.querySelector('body').style.backgroundImage = 'none';
 		mode = 1;
-		start();
 	}
 
 	if (keyIsDown(LEFT_ARROW)) 
