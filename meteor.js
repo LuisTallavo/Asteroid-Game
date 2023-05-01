@@ -1,4 +1,4 @@
-function meteor(position)
+function meteor(multiplier, position, life)
 {
 	if (position)
 	{
@@ -6,10 +6,19 @@ function meteor(position)
 	}else{
 		this.position = createVector(random(width),random(height));
 	}
+
+	if (life) {
+		this.lives = life;
+	}
+	else {
+		this.lives = 4;
+	}
+
+	this.multiplier = multiplier
+
 	this.velocity = createVector(random(-3, 3),random(-3, 3));
 	this.heading = 0;
-	this. size = 3;
-	this.size = random(10,20) * this.size;
+	this.size = random(10,20) * multiplier;
 	this.rotspeed = random(-0.1,0.1);
 	this.total = floor(random(5,15));
 	this.offset = [];
@@ -46,6 +55,14 @@ function meteor(position)
 		this.wraparound();
 	}
 
+	this.dead = function () {
+		if (this.lives <= 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	this.turn = function()
 	{
 
@@ -75,8 +92,8 @@ function meteor(position)
 	this.break = function()
 	{
 		var newA = [];
-		newA[0] = new meteor(this.position.add(createVector(random(-15,15),random(-15,15))));
-		newA[1] = new meteor(this.position.add(createVector(random(-15,15),random(-15,15))));
+		newA[0] = new meteor(this.multiplier - 1, this.position.add(createVector(random(-15,15),random(-15,15))), this.lives - 1);
+		newA[1] = new meteor(this.multiplier - 1, this.position.add(createVector(random(-15,15),random(-15,15))), this.lives - 1);
 		return newA;
 	}
 }

@@ -1,5 +1,6 @@
 function Ship()
 {
+	this.lives = 3;
 	this.position = createVector(750,400);
 	this.velocity = createVector(0,0);
 	this.heading = -PI/2;
